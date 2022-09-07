@@ -1,0 +1,37 @@
+<div class="container">
+  <h2>フォロー</h2>
+  <table class = "table">
+    <thead>
+      <tr>
+        <th>image</th>
+        <th>name</th>
+        <th>フォロー数</th>
+        <th>フォロワー数</th>
+        <th colspan="6"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+      <tr>
+        <td>
+          <%= image_tag user.get_profile_image(100,100) %>
+        </td>
+        <td><%= user.name %></td>
+        <td><%= user.followings.count %></td>
+        <td><%= user.followers.count %></td>
+        <td>
+          <% if user.id != current_user.id %>
+            <% if current_user.following?(user) %>
+              <%= link_to 'フォロー解除', user_relationships_path(user.id), class: "btn btn-danger", method: :delete %>
+            <% else %>
+              <%= link_to 'フォローする', user_relationships_path(user.id), class: "btn btn-success", method: :post %>
+            <% end %>
+          <% end %>
+        </td>
+        <td><%= link_to 'Show', user_path(user.id), class: "btn btn-info" %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+  

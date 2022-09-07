@@ -1,9 +1,36 @@
-<div>
-  <h3><%= @user.name %></h3>
-  <%= image_tag @user.get_profile_image(100,100) %>
-  <% if @user == current_user %>
-    <p><%= link_to "プロフィール編集", edit_user_path(current_user.id) %></p>
-  <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <h4><%= @user.name %></h4>
+      <%= image_tag @user.get_profile_image(100,100) %>
+      <table class="table">
+        <tr>
+          <th>フォロー数</th>
+          <th>
+            <%= link_to user_followings_path(@user.id) do %>
+              <%= @user.followings.count %>
+            <% end %>
+          </th>
+        </tr>
+        <tr>
+          <th>フォロワー数</th>
+          <th>
+            <%= link_to user_followers_path(@user.id) do %>
+              <%= @user.followers.count %>
+            <% end %>
+          </th>
+        </tr>
+      </table>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <%= render "post_images/list", post_images: @post_images %>
+    </div>
+  </div>
 </div>
 
-<%= render "post_images/list", post_images: @post_images %>
+
+
+
+
+
+
