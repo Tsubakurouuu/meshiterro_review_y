@@ -1,5 +1,5 @@
 <div>
-  <%= image_tag @post_image.get_image %>
+  <%= image_tag @post_image.get_image, size: "500x500"%>
   <p>ショップ名: <%= @post_image.shop_name %></p>
   <p>説明: <%= @post_image.caption %></p>
   <p>投稿ユーザー画像: <%= image_tag @post_image.user.get_profile_image(100,100) %></p>
@@ -8,19 +8,9 @@
   <% if @post_image.user == current_user %>
     <%= link_to "削除", post_image_path(@post_image), method: :delete %>
   <% end %>
-  <% if @post_image.favorited_by?(current_user) %>
-    <p>
-      <%= link_to post_image_favorites_path(@post_image), method: :delete do %>
-        ❤<%= @post_image.favorites.count %>いいね
-      <% end %>
-    </p>
-    <% else %>
-    <p>
-      <%= link_to post_image_favorites_path(@post_image), method: :post do %>
-        ♡<%= @post_image.favorites.count %>いいね
-      <% end %>
-    </p>
-  <% end %>
+<div id="favorite<%= @post_image.id %>">
+  <%= render "favorites/favorite-btn", post_image: @post_image %>
+  
 </div>
 
 <div>
