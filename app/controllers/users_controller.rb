@@ -17,6 +17,11 @@ class UsersController < ApplicationController
     @user.update(user_params)
     redirect_to user_path(@user.id)
   end
+  
+  def search
+    @word = params[:word]
+    @users = User.looks(params[:search], params[:word])
+  end
 
   private
 
