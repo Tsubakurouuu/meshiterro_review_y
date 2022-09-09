@@ -27,13 +27,13 @@
               <% end %>
             </td>
             <td><%= user.name %></td>
-            <td id="following">
+            <td id="<%= user.id %>followings-count">
               <%= render "relationships/followings", user: user %>
             </td>
-            <td id="followers">
+            <td id="<%= user.id %>followers-count">
               <%= render "relationships/followers", user: user %>
             </td>
-            <td id="follow">
+            <td id="<%= user.id %>follow">
               <% if user.id != current_user.id %>
                 <%= render "relationships/follow-btn", user: user %>
               <% end %>
