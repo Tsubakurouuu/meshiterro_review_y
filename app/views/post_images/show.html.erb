@@ -20,6 +20,9 @@
     <%= render "post_comments/index", post_image: @post_image %>
   </div>
 </div>
+<div id="comments_error">
+  <%= render "layouts/errors", post_comment: @post_comment %>
+</div>
 <div id="form<%= @post_image.id %>">
   <%= render "post_comments/form", post_image: @post_image, post_comment: @post_comment %>
 </div>

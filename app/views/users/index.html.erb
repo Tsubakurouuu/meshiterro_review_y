@@ -27,7 +27,7 @@
               <% end %>
             </td>
             <td><%= user.name %></td>
-            <td id="<%= user.id %>followings-count">
+            <td id="<%= current_user.id %>followings-count">
               <%= render "relationships/followings", user: user %>
             </td>
             <td id="<%= user.id %>followers-count">

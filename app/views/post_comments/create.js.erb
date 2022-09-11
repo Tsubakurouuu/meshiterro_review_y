@@ -1,3 +1,6 @@
 $("#count<%= @post_image.id %>").html("<%= j(render "post_comments/count", post_image: @post_image) %>");
 $("#index<%= @post_image.id %>").html("<%= j(render "post_comments/index", post_image: @post_image) %>");
 $("#post_comment_comment").val('');
+<% if @post_comment.save %>
+  $("#comments_error").val('');
+<% end %>
